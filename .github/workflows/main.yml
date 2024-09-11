@@ -69,11 +69,11 @@ jobs:
             push: true
             tags: |
               snowdreamtech/python:latest
-              snowdreamtech/python:3.12.3
+              snowdreamtech/python:3.12.6
               snowdreamtech/python:3.12
               snowdreamtech/python:3
               ghcr.io/snowdreamtech/python:latest
-              ghcr.io/snowdreamtech/python:3.12.3
+              ghcr.io/snowdreamtech/python:3.12.6
               ghcr.io/snowdreamtech/python:3.12
               ghcr.io/snowdreamtech/python:3
              
