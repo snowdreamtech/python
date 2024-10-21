@@ -6,6 +6,6 @@ LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 # See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
 ENV PYTHONUNBUFFERED=1
 
-RUN apk add --no-cache python3=3.12.6-r0 \
+RUN apk add --no-cache python3=3.12.7-r0 \
     py3-pip \
     py3-setuptools 
