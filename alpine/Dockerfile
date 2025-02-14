@@ -9,14 +9,14 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="3.21.0" \
+    org.opencontainers.image.version="3.12.9" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
 # This hack is widely applied to avoid python printing issues in docker containers.
 # See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
 ENV PYTHONUNBUFFERED=1
 
-ENV PYTHON_VERSION=3.12.8-r1
+ENV PYTHON_VERSION=3.12.9-r0
 
 ARG GID=1000 \
     UID=1000  \
