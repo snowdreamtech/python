@@ -16,7 +16,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
 # See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
 ENV PYTHONUNBUFFERED=1
 
-ENV PYTHON_VERSION=3.12.10-r0
+ENV PYTHON_VERSION=3.12.10-r1
 
 ARG GID=1000 \
     UID=1000  \
