@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="3.11.2" \
+    org.opencontainers.image.version="3.13.5" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
 # Switch to the user
@@ -54,7 +54,7 @@ ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
 # See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
 ENV PYTHONUNBUFFERED=1
 
-ENV PYTHON_VERSION=3.11.2-1+b1
+ENV PYTHON_VERSION=3.13.5-1
 
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy update  \
