@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="3.12.11" \
+    org.opencontainers.image.version="3.12.12" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
     
 # Switch to the user
@@ -52,7 +52,7 @@ ENV KEEPALIVE=${KEEPALIVE} \
 # See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
 ENV PYTHONUNBUFFERED=1
 
-ENV PYTHON_VERSION=3.12.11-r0
+ENV PYTHON_VERSION=3.12.12-r0
 
 # Create a user with PUID and PGID
 RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 ] && [ "${PGID}" -ne 0 ]; then \
