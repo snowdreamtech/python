@@ -67,6 +67,7 @@ RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy update  \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy install --no-install-recommends \ 
     python3=${PYTHON_VERSION} \
+    python-is-python3 \
     python3-pip \
     python3-setuptools \
     python3-venv \
