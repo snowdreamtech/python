@@ -2,15 +2,15 @@ FROM snowdreamtech/rocky:10.1
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Base Image Based On Rocky" \
-    org.opencontainers.image.description="Docker Images for Base on Rocky. (i386,amd64,arm32v5,arm32v7,arm64,mips64le,ppc64le,s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/base" \
-    org.opencontainers.image.base.name="snowdreamtech/base:rocky" \
+    org.opencontainers.image.title="Python Image Based On Rocky" \
+    org.opencontainers.image.description="Docker Images for Python on Rocky. (i386,amd64,arm32v5,arm32v7,arm64,mips64le,ppc64le,s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
+    org.opencontainers.image.base.name="snowdreamtech/python:rocky" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/base" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="10.1" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/base"
+    org.opencontainers.image.version="3.12.11" \
+    org.opencontainers.image.url="https://github.com/snowdreamtech/python"
     
 # Switch to the user
 USER root
@@ -47,6 +47,12 @@ ENV KEEPALIVE=${KEEPALIVE} \
     PUID=${PUID}  \
     USER=${USER} \
     WORKDIR=${WORKDIR} 
+    
+# This hack is widely applied to avoid python printing issues in docker containers.
+# See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
+ENV PYTHONUNBUFFERED=1
+
+ENV PYTHON_VERSION=3.12.11-3.el10
 
 # Create a user with PUID and PGID
 RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 ] && [ "${PGID}" -ne 0 ]; then \
@@ -58,7 +64,12 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 RUN set -eux \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install --allowerasing \ 
-    vim \                                                                                                                                                                                      
+    python3-${PYTHON_VERSION} \
+    python-is-python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-virtualenv \                                                                                                                                                                                   
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
