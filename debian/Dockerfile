@@ -70,6 +70,7 @@ RUN set -eux \
     python-is-python3 \
     python3-pip \
     python3-setuptools \
+    python3-wheel \
     python3-venv \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \

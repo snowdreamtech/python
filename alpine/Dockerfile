@@ -65,6 +65,7 @@ RUN apk add --no-cache \
     python3=${PYTHON_VERSION} \
     py3-pip \
     py3-setuptools \
+    py3-wheel \
     py3-virtualenv
 
 # Enable CAP_NET_BIND_SERVICE
