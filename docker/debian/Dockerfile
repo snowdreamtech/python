@@ -7,7 +7,6 @@ FROM snowdreamtech/debian:13.5.0
 ARG BUILDTIME \
     VERSION \
     REVISION \
-    PYTHON_VERSION=3.13.5-1 \
     DEBIAN_FRONTEND=noninteractive \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
@@ -29,14 +28,16 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="${VERSION:-3.13.5-1}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
+# x-release-please-start-version
+LABEL org.opencontainers.image.version="${VERSION:-3.13.5}"
+# x-release-please-end
+
 # Runtime Environment Configuration
-ENV PYTHON_VERSION=${PYTHON_VERSION} \
-    DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
+ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     KEEPALIVE=${KEEPALIVE} \
     CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
     LANG=${LANG} \
@@ -46,7 +47,8 @@ ENV PYTHON_VERSION=${PYTHON_VERSION} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR}
+    WORKDIR=${WORKDIR} \
+    PYTHON_VERSION=${PYTHON_VERSION}
 
 # Additional tooling and configuration for Python image
 RUN set -eux \

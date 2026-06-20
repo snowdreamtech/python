@@ -7,7 +7,6 @@ FROM snowdreamtech/rocky:10.2.0
 ARG BUILDTIME \
     VERSION \
     REVISION \
-    PYTHON_VERSION=3.14.4-2.el10_2 \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
     LANG=C.UTF-8 \
@@ -17,7 +16,8 @@ ARG BUILDTIME \
     PGID=0 \
     PUID=0 \
     USER=root \
-    WORKDIR=/root
+    WORKDIR=/root \
+    PYTHON_VERSION=3.14.4-2.el10_2
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
@@ -34,8 +34,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
 # Runtime Environment Configuration
-ENV PYTHON_VERSION=${PYTHON_VERSION} \
-    KEEPALIVE=${KEEPALIVE} \
+ENV KEEPALIVE=${KEEPALIVE} \
     CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
     LANG=${LANG} \
     UMASK=${UMASK} \
@@ -44,7 +43,8 @@ ENV PYTHON_VERSION=${PYTHON_VERSION} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR}
+    WORKDIR=${WORKDIR} \
+    PYTHON_VERSION=${PYTHON_VERSION}
 
 # Additional tooling and configuration for Python image
 RUN set -eux \

@@ -746,3 +746,5 @@ coverage.svg
 sbom.json
 completions/
 manpages/
+
+base-dev-tmp/
