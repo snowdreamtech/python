@@ -1,3 +1,4 @@
+# test: verify cd workflow tag push triggers docker build
 # Base Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
