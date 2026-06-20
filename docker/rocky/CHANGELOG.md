@@ -5,6 +5,13 @@
 
 ### 🐛 Bug Fixes
 
+* resolve missing PYTHON_VERSION ARG and restore release-please annotations ([060ceca](https://github.com/snowdreamtech/python/commit/060ceca174e948b0b6d66fbe6def4ca7240815b5))
+
+## [3.14.4](https://github.com/snowdreamtech/python/compare/rocky-v3.14.4...rocky-v3.14.4) (2026-06-20)
+
+
+### 🐛 Bug Fixes
+
 * restore release-please annotations and correct changelog format ([756f1e4](https://github.com/snowdreamtech/python/commit/756f1e427e2b5e3b98924200120fcf9831d01d9f))
 
 ## Changelog
