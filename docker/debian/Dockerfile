@@ -1,4 +1,3 @@
-# test: verify cd workflow tag push triggers docker build
 # Base Image (Debian Variant)
 # Extends snowdreamtech/debian with additional tooling and configuration.
 

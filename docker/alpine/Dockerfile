@@ -1,4 +1,3 @@
-# test: verify cd workflow tag push triggers docker build
 # Base Image (Alpine Variant)
 # Extends snowdreamtech/alpine with additional tooling and configuration.
 
