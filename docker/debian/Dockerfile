@@ -1,16 +1,15 @@
 # Base Image (Debian Variant)
 # Extends snowdreamtech/debian with additional tooling and configuration.
 
-FROM snowdreamtech/debian:13.5.0
+FROM snowdreamtech/debian:12.9
 
 # Build-time Configuration
 ARG BUILDTIME \
     VERSION \
     REVISION \
-    DEBIAN_FRONTEND=noninteractive \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
-    LANG=C.UTF-8 \
+    LANG=en_US.UTF-8 \
     UMASK=022 \
     DEBUG=false \
     PASSWORDLESS_SUDO=false \
@@ -23,23 +22,21 @@ ARG BUILDTIME \
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Python Image Based On Debian" \
-    org.opencontainers.image.description="Python Image Based On Debian" \
+    org.opencontainers.image.description="Docker Images for Python on Debian. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
-    org.opencontainers.image.base.name="snowdreamtech/debian:13.5.0" \
+    org.opencontainers.image.base.name="snowdreamtech/debian:12.9" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
+    # x-release-please-start-version
+    org.opencontainers.image.version="${VERSION:-3.13.5}" \
+    # x-release-please-end
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
-# x-release-please-start-version
-LABEL org.opencontainers.image.version="${VERSION:-3.13.5}"
-# x-release-please-end
-
 # Runtime Environment Configuration
-ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
-    KEEPALIVE=${KEEPALIVE} \
+ENV KEEPALIVE=${KEEPALIVE} \
     CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
     LANG=${LANG} \
     UMASK=${UMASK} \
@@ -48,14 +45,19 @@ ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR} \
+    WORKDIR=${WORKDIR}
+
+ENV PYTHONUNBUFFERED=1 \
     PYTHON_VERSION=${PYTHON_VERSION}
 
-# Additional tooling and configuration for Python image
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy update \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy install --no-install-recommends \
     python3=${PYTHON_VERSION} \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-venv \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \

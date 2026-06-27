@@ -1,7 +1,7 @@
 # Base Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
-FROM snowdreamtech/rocky:10.2.0
+FROM snowdreamtech/rocky:9.5
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -9,7 +9,7 @@ ARG BUILDTIME \
     REVISION \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
-    LANG=C.UTF-8 \
+    LANG=en_US.UTF-8 \
     UMASK=022 \
     DEBUG=false \
     PASSWORDLESS_SUDO=false \
@@ -17,24 +17,23 @@ ARG BUILDTIME \
     PUID=0 \
     USER=root \
     WORKDIR=/root \
-    PYTHON_VERSION=3.14.4-2.el10_2
+    PYTHON_VERSION=3.12.11-3.el10
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Python Image Based On Rocky" \
-    org.opencontainers.image.description="Python Image Based On Rocky" \
+    org.opencontainers.image.description="Docker Images for Python on Rocky. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
-    org.opencontainers.image.base.name="snowdreamtech/rocky:10.2.0" \
+    org.opencontainers.image.base.name="snowdreamtech/rocky:9.5" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
+    # x-release-please-start-version
+    org.opencontainers.image.version="${VERSION:-3.12.11}" \
+    # x-release-please-end
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
-
-# x-release-please-start-version
-LABEL org.opencontainers.image.version="${VERSION:-3.14.4}"
-# x-release-please-end
 
 # Runtime Environment Configuration
 ENV KEEPALIVE=${KEEPALIVE} \
@@ -46,19 +45,20 @@ ENV KEEPALIVE=${KEEPALIVE} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR} \
+    WORKDIR=${WORKDIR}
+
+ENV PYTHONUNBUFFERED=1 \
     PYTHON_VERSION=${PYTHON_VERSION}
 
-# Additional tooling and configuration for Python image
-RUN set -eux \
-    && dnf -y --allowerasing update \
-    && dnf -y --allowerasing install \
-    python3.14-${PYTHON_VERSION} \
-    && dnf -y --allowerasing autoremove \
-    && dnf -y --allowerasing clean all \
-    && rm -rf /var/cache/dnf \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*
+RUN dnf update -y \
+    && dnf install -y \
+    python3=${PYTHON_VERSION} \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-virtualenv \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf
 
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
