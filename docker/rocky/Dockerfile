@@ -17,7 +17,7 @@ ARG BUILDTIME \
     PUID=0 \
     USER=root \
     WORKDIR=/root \
-    PYTHON_VERSION=3.12.13
+    PYTHON_VERSION=3.12.13-2.el10_2
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
@@ -50,7 +50,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 RUN dnf update -y \
     && dnf install -y \
-    python3=${PYTHON_VERSION} \
+    python3-${PYTHON_VERSION} \
     python3-pip \
     python3-setuptools \
     python3-wheel \
