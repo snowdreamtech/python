@@ -17,7 +17,7 @@ ARG BUILDTIME \
     PUID=0 \
     USER=root \
     WORKDIR=/root \
-    PYTHON_VERSION=3.12.13-2.el10_2.1
+    PYTHON_VERSION=3.12.13
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
