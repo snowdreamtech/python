@@ -210,7 +210,7 @@ Images follow semantic versioning with the format: `{major}.{minor}.{patch}-{var
 Examples:
 
 - `snowdreamtech/python:3.13.5-debian`
-- `snowdreamtech/python:3.12.13-alpine`
+- `snowdreamtech/python:3.14.5-alpine`
 - `snowdreamtech/python:3.12.13-rocky`
 
 This format allows:
