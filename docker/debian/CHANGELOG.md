@@ -31,9 +31,3 @@
 * sync debian build matrix and documentation with upstream ([0d6e613](https://github.com/snowdreamtech/python/commit/0d6e6132c84a368f5b64b9144d9c7d3b7292d746))
 * update debian base image to 13.6.0 ([5f885d5](https://github.com/snowdreamtech/python/commit/5f885d5a771f06d449533f2f3c619d27444822f5))
 
-## [3.13.5](https://github.com/snowdreamtech/python/compare/debian-v3.13.5...debian-v3.13.5) (2026-06-20)
-
-
-### ♻️ Miscellaneous Chores
-
-* remove test comment from Dockerfiles ([d017b0b](https://github.com/snowdreamtech/python/commit/d017b0bfa519e56f106c301cbd51c62cc86a9ce2))

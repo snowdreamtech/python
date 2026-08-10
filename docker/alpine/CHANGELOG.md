@@ -29,9 +29,3 @@
 * **release:** deduplicate CHANGELOG headers ([e795177](https://github.com/snowdreamtech/python/commit/e79517795d98b9f8292ef956586a6dc03932d03c))
 * update alpine base image to 3.24.1 ([3021ed3](https://github.com/snowdreamtech/python/commit/3021ed3b4ffa5f8916f5fa46aa4325e8ebf84ba6))
 
-## [3.14.5](https://github.com/snowdreamtech/python/compare/alpine-v3.14.5...alpine-v3.14.5) (2026-06-20)
-
-
-### ♻️ Miscellaneous Chores
-
-* remove test comment from Dockerfiles ([d017b0b](https://github.com/snowdreamtech/python/commit/d017b0bfa519e56f106c301cbd51c62cc86a9ce2))
