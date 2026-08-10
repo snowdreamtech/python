@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.14.4](https://github.com/snowdreamtech/python/compare/rocky-v3.14.4...rocky-v3.14.4) (2026-06-20)
+## [3.12.13](https://github.com/snowdreamtech/python/compare/rocky-v3.12.13...rocky-v3.12.13) (2026-06-20)
 
 
 ### ♻️ Miscellaneous Chores
