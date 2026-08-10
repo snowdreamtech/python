@@ -1,7 +1,7 @@
 # Base Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
-FROM snowdreamtech/rocky:9.5
+FROM ghcr.io/snowdreamtech/rocky:10.2.0
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -24,13 +24,11 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Python Image Based On Rocky" \
     org.opencontainers.image.description="Docker Images for Python on Rocky. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
-    org.opencontainers.image.base.name="snowdreamtech/rocky:9.5" \
+    org.opencontainers.image.base.name="ghcr.io/snowdreamtech/rocky:10.2.0" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    # x-release-please-start-version
-    org.opencontainers.image.version="${VERSION:-3.12.11}" \
-    # x-release-please-end
+    org.opencontainers.image.version="${VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"

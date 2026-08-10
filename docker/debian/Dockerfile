@@ -1,7 +1,7 @@
 # Base Image (Debian Variant)
 # Extends snowdreamtech/debian with additional tooling and configuration.
 
-FROM snowdreamtech/debian:12.9
+FROM ghcr.io/snowdreamtech/debian:13.6.0
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -22,15 +22,13 @@ ARG BUILDTIME \
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Python Image Based On Debian" \
-    org.opencontainers.image.description="Docker Images for Python on Debian. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
+    org.opencontainers.image.description="Docker Images for Python on Debian. (amd64, arm32v7, arm64, ppc64le, riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
-    org.opencontainers.image.base.name="snowdreamtech/debian:12.9" \
+    org.opencontainers.image.base.name="ghcr.io/snowdreamtech/debian:13.6.0" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    # x-release-please-start-version
-    org.opencontainers.image.version="${VERSION:-3.13.5}" \
-    # x-release-please-end
+    org.opencontainers.image.version="${VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/python"
