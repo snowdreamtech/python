@@ -57,7 +57,6 @@ RUN set -eux \
     python3-setuptools \
     python3-wheel \
     python3-virtualenv \
-    vim-enhanced \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
