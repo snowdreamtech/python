@@ -210,7 +210,7 @@ services:
 示例：
 
 - `snowdreamtech/python:3.13.5-debian`
-- `snowdreamtech/python:3.14.5-alpine`
+- `snowdreamtech/python:3.14.7-alpine`
 - `snowdreamtech/python:3.12.13-rocky`
 
 此格式允许：
