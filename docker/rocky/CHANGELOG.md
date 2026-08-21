@@ -3,8 +3,9 @@
 ## [3.12.13](https://github.com/snowdreamtech/python/compare/rocky-v3.12.13...rocky-v3.12.13) (2026-08-10)
 
 
-### 🐛 Bug Fixes
+### ♻️ Miscellaneous Chores
 
+* **docker:** ignore unavailable repos for rocky build ([a6b6b6e](https://github.com/snowdreamtech/base/commit/a6b6b6e5b2288cfeb6b2777902b85e7e5f37f2c3))
 * **docker:** simplify rocky python version to 3.12.13 to fix dnf build failure and unify versions ([40a9063](https://github.com/snowdreamtech/python/commit/40a906302120b0c2ca4f92be181bd7def72c1cce))
 * **docker:** unify rocky python version to 3.12.13 across manifest and changelog ([a2a9d6a](https://github.com/snowdreamtech/python/commit/a2a9d6a61a008712c49a81a8530d3f3f9e9cea20))
 * **docker:** update python3 version to 3.12.13 for alpine and rocky ([a9ee6bc](https://github.com/snowdreamtech/python/commit/a9ee6bce4c6480fe4cc0aa1146c6f44875a88e26))

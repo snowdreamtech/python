@@ -48,15 +48,21 @@ ENV KEEPALIVE=${KEEPALIVE} \
 ENV PYTHONUNBUFFERED=1 \
     PYTHON_VERSION=${PYTHON_VERSION}
 
-RUN dnf update -y \
-    && dnf install -y \
+# Additional tooling and configuration for Base image
+RUN set -eux \
+    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true update \
+    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true install \
     python3-${PYTHON_VERSION} \
     python3-pip \
     python3-setuptools \
     python3-wheel \
     python3-virtualenv \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+    vim-enhanced \
+    && dnf -y --allowerasing autoremove \
+    && dnf -y --allowerasing clean all \
+    && rm -rf /var/cache/dnf \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/*
 
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
