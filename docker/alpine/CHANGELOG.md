@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.14.7](https://github.com/snowdreamtech/python/compare/alpine-v3.14.5...alpine-v3.14.7) (2026-08-21)
+
+
+### 🐛 Bug Fixes
+
+* **docker:** update Alpine python3 version to 3.14.7-r1 ([fe2f4d7](https://github.com/snowdreamtech/python/commit/fe2f4d71bc41afcb6daa8ee88567a44ba109e73f))
+
 ## [3.14.5](https://github.com/snowdreamtech/python/compare/alpine-v3.14.5...alpine-v3.14.5) (2026-08-10)
 
 
@@ -28,4 +35,3 @@
 * **release:** deduplicate CHANGELOG headers ([d47fb44](https://github.com/snowdreamtech/python/commit/d47fb44cb105b368722d7d0e210a27b525f82d87))
 * **release:** deduplicate CHANGELOG headers ([e795177](https://github.com/snowdreamtech/python/commit/e79517795d98b9f8292ef956586a6dc03932d03c))
 * update alpine base image to 3.24.1 ([3021ed3](https://github.com/snowdreamtech/python/commit/3021ed3b4ffa5f8916f5fa46aa4325e8ebf84ba6))
-
