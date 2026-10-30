@@ -1,30 +1,17 @@
 # Changelog
 
-## [10.2.0](https://github.com/snowdreamtech/base/compare/rocky-v10.2.0...rocky-v10.2.0) (2026-10-28)
+## [3.12.13](https://github.com/snowdreamtech/python/compare/rocky-v3.12.13...rocky-v3.12.13) (2026-08-21)
 
 
-### 🚀 Features
+### 🐛 Bug Fixes
 
-* initial release of snowdreamtech base docker images powered by unirtm ([25f55c8](https://github.com/snowdreamtech/base/commit/25f55c84e8fba977d226739e9871d61e1428fdeb))
-
-## [10.1.0](https://github.com/snowdreamtech/base/compare/rocky-v10.1.0...rocky-v10.1.0) (2026-04-29)
-
-
-### 🛠 Refactoring
-
-* **docker:** align Dockerfiles with base image structure ([232574f](https://github.com/snowdreamtech/base/commit/232574fed8418f8c7f257d001e951361dfa467a0))
-* remove redundant docker-entrypoint.sh files ([87c576b](https://github.com/snowdreamtech/base/commit/87c576b27731ad11c5bc0ebc661e07c5a09ff1c1))
-* reorganize distribution variants into docker directory ([67a8c91](https://github.com/snowdreamtech/base/commit/67a8c911e21801bf12b3e83d02e22f3b3f59a2ba))
-
-
-### 📖 Documentation
-
-* add detailed comments to entrypoint initialization scripts ([f42cbaa](https://github.com/snowdreamtech/base/commit/f42cbaab6edfbc5c38c2a636dfd8651fea900940))
+* **docker:** remove redundant vim-enhanced package from Rocky Dockerfile ([c1c1ada](https://github.com/snowdreamtech/python/commit/c1c1ada38f1e9a11f9d3b4d333a1b9714daadc10))
 
 
 ### ♻️ Miscellaneous Chores
 
-* **main:** release 0.14.0 ([043d2a4](https://github.com/snowdreamtech/base/commit/043d2a4202505e42c645e899c6731f5fb8f52c8e))
-* release 0.6.1 ([f6fc042](https://github.com/snowdreamtech/base/commit/f6fc042cad7d1c4991a20657655bc4b6b339d0d9))
-* release 0.7.1 ([5535492](https://github.com/snowdreamtech/base/commit/5535492160f3525dff06ff9f0c6d78147467bed3))
-* **release:** v0.4.0 - Fix Dependabot docker-compose detection ([e91f7d8](https://github.com/snowdreamtech/base/commit/e91f7d882f3c7b23260f4da02f0e5e53d6399968))
+* **docker:** ignore unavailable repos for rocky build ([a6b6b6e](https://github.com/snowdreamtech/python/commit/a6b6b6e5b2288cfeb6b2777902b85e7e5f37f2c3))
+* merge upstream/dev into dev ([2a79a1e](https://github.com/snowdreamtech/python/commit/2a79a1e0268d8a4e4d44ec00a45a12ec83d5a1be))
+* release main ([f02b25f](https://github.com/snowdreamtech/python/commit/f02b25f841191eb64887a336d230ee952d0bf0a2))
+* **release:** deduplicate CHANGELOG headers ([656f92c](https://github.com/snowdreamtech/python/commit/656f92c06f70b548a9fabf4db3fb1f02daf18733))
+

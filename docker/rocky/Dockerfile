@@ -1,14 +1,15 @@
-# Base Image (Rocky Variant)
+# Python Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
 FROM ghcr.io/snowdreamtech/rocky:10.2.0
 
 # Build-time Configuration
 # x-release-please-start-version
-ARG VERSION="10.2.0"
+ARG PYTHON_VERSION=3.12.13
 # x-release-please-end
 
 ARG BUILDTIME \
+    VERSION \
     REVISION \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
@@ -23,17 +24,17 @@ ARG BUILDTIME \
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Base Image Based On Rocky" \
-    org.opencontainers.image.description="Docker Images for Base on Rocky. (amd64, arm64, ppc64le, s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/base" \
-    org.opencontainers.image.base.name="snowdreamtech/base:rocky" \
+    org.opencontainers.image.title="Python Image Based On Rocky" \
+    org.opencontainers.image.description="Docker Images for Python on Rocky. (amd64, arm64, ppc64le, s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
+    org.opencontainers.image.base.name="snowdreamtech/rocky:10.2.0" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/base" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
     org.opencontainers.image.version="${VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/base"
+    org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
 # Runtime Environment Configuration
 ENV KEEPALIVE=${KEEPALIVE} \
@@ -45,13 +46,25 @@ ENV KEEPALIVE=${KEEPALIVE} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR}
+    WORKDIR=${WORKDIR} \
+    PYTHONUNBUFFERED=1 \
+    PYTHON_VERSION=${PYTHON_VERSION}
 
-# Additional tooling and configuration for Base image
+# Additional tooling and configuration for Python image
 RUN set -eux \
-    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true update \
-    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true install \
-    vim-enhanced \
+    && dnf -y --allowerasing update \
+    && dnf -y --allowerasing install \
+    "python3-${PYTHON_VERSION}*" \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-virtualenv \
+    || dnf -y --allowerasing install \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-virtualenv \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \

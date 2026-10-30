@@ -1,14 +1,15 @@
-# Base Image (Alpine Variant)
+# Python Image (Alpine Variant)
 # Extends snowdreamtech/alpine with additional tooling and configuration.
 
 FROM ghcr.io/snowdreamtech/alpine:3.24.1
 
 # Build-time Configuration
 # x-release-please-start-version
-ARG VERSION="3.24.1"
+ARG PYTHON_VERSION=3.14.7
 # x-release-please-end
 
 ARG BUILDTIME \
+    VERSION \
     REVISION \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
@@ -23,17 +24,17 @@ ARG BUILDTIME \
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Base Image Based On Alpine" \
-    org.opencontainers.image.description="Docker Images for Base on Alpine. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/base" \
-    org.opencontainers.image.base.name="snowdreamtech/base:alpine" \
+    org.opencontainers.image.title="Python Image Based On Alpine" \
+    org.opencontainers.image.description="Docker Images for Python on Alpine. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/python" \
+    org.opencontainers.image.base.name="snowdreamtech/alpine:3.24.1" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/base" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/python" \
     org.opencontainers.image.vendor="Snowdream Tech" \
     org.opencontainers.image.version="${VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/base"
+    org.opencontainers.image.url="https://github.com/snowdreamtech/python"
 
 # Runtime Environment Configuration
 ENV KEEPALIVE=${KEEPALIVE} \
@@ -45,12 +46,24 @@ ENV KEEPALIVE=${KEEPALIVE} \
     PGID=${PGID} \
     PUID=${PUID} \
     USER=${USER} \
-    WORKDIR=${WORKDIR}
+    WORKDIR=${WORKDIR} \
+    PYTHONUNBUFFERED=1 \
+    PYTHON_VERSION=${PYTHON_VERSION}
 
-# Additional tooling and configuration for Base image
+# Additional tooling and configuration for Python image
 RUN apk update \
     && apk add --no-cache \
-    vim
+    "python3=~${PYTHON_VERSION}" \
+    py3-pip \
+    py3-setuptools \
+    py3-wheel \
+    py3-virtualenv \
+    || apk add --no-cache \
+    python3 \
+    py3-pip \
+    py3-setuptools \
+    py3-wheel \
+    py3-virtualenv
 
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
